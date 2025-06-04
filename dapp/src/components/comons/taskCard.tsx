@@ -7,20 +7,30 @@ interface TaskCardProps {
     description: string;
     createdAt: string;
     dueDate: string;
-    stake: number;
+    isCompleted: boolean;
+    handleCompleteTask: (id: string) => void;
 }
 
-export function TaskCard({ title, description, createdAt, dueDate, stake }: TaskCardProps) {
+export function TaskCard({ title, description, createdAt, dueDate, isCompleted, handleCompleteTask }: TaskCardProps) {
     return (
         <Card>
             <CardHeader className="flex">
-                <div className="flex flex-col ">
+                <div className="flex  ">
                     <h1 className="text-lg font-bold">{title}</h1>
+                    {
+                    isCompleted ? (
+                        <Badge variant="default">
+                            concluída
+                        </Badge>
+                    ) : (
+                        <Badge variant="default">
+                            pendente
+                        </Badge>
+                    )
+                }
 
                 </div>
-                <Badge variant="default">
-                    pendente
-                </Badge>
+            
 
             </CardHeader>
             <CardContent>
@@ -31,7 +41,7 @@ export function TaskCard({ title, description, createdAt, dueDate, stake }: Task
                     <p className="text-sm text-muted-foreground">Data criada: {createdAt}</p>
                     <p className="text-sm text-muted-foreground">Data de vencimento: {dueDate}</p>
                 </div>
-                <span>{stake} wei</span>
+               
             </CardFooter>
         </Card>
     )

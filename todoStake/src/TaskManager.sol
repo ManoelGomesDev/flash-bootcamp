@@ -25,8 +25,7 @@ contract TaskManager {
     function createTask(
         string memory _title,
         string memory _description,
-        uint256 _dueDate,
-        uint256 _createdAt
+        uint256 _dueDate
     ) public {
         Task memory task = Task({
             completedAt: 0,
